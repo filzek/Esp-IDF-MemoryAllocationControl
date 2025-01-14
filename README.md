@@ -71,7 +71,7 @@ typedef struct MemoryTraceInfo {
     void *address;  // Pointer to allocated memory
     char *var_name; // Variable name (if available)
 } MemoryTraceInfo;
-```c
+``` 
 
 This structure tracks details such as file name, line number, function name, allocated size, memory capabilities, allocation method, failure status, pointer address, and variable name (if available).
 
@@ -82,7 +82,7 @@ These wrappers replace the standard heap_caps_* functions for logging and tracki
 void *traceable_heap_caps_malloc(size_t size, uint32_t caps, char *file, int line, char *function);
 void *traceable_heap_caps_calloc(size_t n, size_t size, uint32_t caps, const char *file, int line, const char *function);
 void *traceable_heap_caps_realloc(void *ptr, size_t size, uint32_t caps, char *file, int line, char *function);
-```c
+``` 
 
 #What They Do
 Allocate memory using ESP-IDF’s heap_caps_* functions.
@@ -100,7 +100,7 @@ Removes the entry corresponding to ptr from the global tracking array when memor
 
 ```c
 void log_memory_allocation(MemoryTraceInfo info_requested);
-```c
+``` 
 
 Whenever an allocation fails (or if you want to capture a snapshot), this function logs details of the failure. It can be customized to write logs to flash, files, or other sinks.
 
@@ -108,7 +108,7 @@ Whenever an allocation fails (or if you want to capture a snapshot), this functi
 
 ```c
 void free_unregister_allocation(void **ptr);
-```c
+``` 
 
 Zeros out the memory block (if found) before freeing.
 Unregisters it from the global tracking array.
@@ -118,7 +118,7 @@ Sets the caller’s pointer to NULL to avoid dangling pointers.
 
 ```c
 void list_allocations();
-```c
+``` 
 
 Prints out all tracked allocations, including:
 
@@ -141,7 +141,7 @@ To automatically include file name, line number, and function in the tracking da
 
 #define TRACE_REALLOC(ptr, size, caps) \
     traceable_heap_caps_realloc((ptr), (size), (caps), __FILE__, __LINE__, __FUNCTION__)
-```c
+``` 
 
 Replace direct calls to heap_caps_* with these macros in your code to enable automatic tracking.
 
