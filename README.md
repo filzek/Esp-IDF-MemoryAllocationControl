@@ -53,7 +53,7 @@ typedef struct MemoryTraceInfo {
     void *address;  // Pointer to allocated memory
     char *var_name; // Variable name (if available)
 } MemoryTraceInfo;
-```c
+``` 
 
 # ESP-IDF Memory Tracking and Debugging Utilities
 
@@ -177,7 +177,17 @@ void app_main(void) {
     // Confirm it's removed from tracking
     list_allocations();
 }
-```c
+``` 
 
+
+#Additional Notes
+##Heap Information:
+You can call print_memory_info("YourTag"); at any time to see a breakdown of free memory for different capabilities.
+
+##Performance Considerations:
+This system adds overhead and is best used during development to detect memory issues. Disable or remove it for production if performance is critical.
+
+##Semaphore Usage:
+A global SemaphoreHandle_t memorySemaphore is used to protect the tracking array from concurrent modifications.
 
 
