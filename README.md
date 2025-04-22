@@ -191,3 +191,7 @@ This system adds overhead and is best used during development to detect memory i
 A global SemaphoreHandle_t memorySemaphore is used to protect the tracking array from concurrent modifications.
 
 
+<a href="https://scan.coverity.com/projects/esp-idf-memory-tracking-and-debugging-utilities">
+  <img alt="Coverity Scan Build Status"
+       src="https://scan.coverity.com/projects/31614/badge.svg"/>
+</a>
